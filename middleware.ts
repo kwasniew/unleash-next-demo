@@ -13,7 +13,7 @@ export async function middleware(req: NextRequest) {
 //     appName: 'my-node-name',
 //     customHeaders: { Authorization: process.env.UNLEASH_SERVER_API_TOKEN },
 // });
-    console.log("middleware");
+//     console.log("middleware");
     const definitions = await getDefinitions()
     // const context = {}; // optional, see https://docs.getunleash.io/reference/unleash-context
     // const {toggles} = evaluateFlags(definitions, context);
