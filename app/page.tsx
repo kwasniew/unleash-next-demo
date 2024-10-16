@@ -44,6 +44,7 @@ const throttleMetrics = async (metric: any) => {
 };
 
 export default async function Page() {
+    console.log('Requested page', new Date())
     // let data = await fetch('https://api.vercel.app/blog')
     const definitions = await getDefinitions()
     const context = {}; // optional, see https://docs.getunleash.io/reference/unleash-context
