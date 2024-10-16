@@ -43,6 +43,15 @@ const throttleMetrics = async (metric: any) => {
     }
 };
 
+export async function getServerSideProps(context: any) {
+    // Fetch data dynamically on every request
+    // const res = await fetch('https://api.example.com/data');
+    // const data = await res.json();
+
+    // Pass data to the page via props
+    return { props: { data: [] } };
+}
+
 export default async function Page() {
     console.error('Requested page', new Date())
     // let data = await fetch('https://api.vercel.app/blog')
