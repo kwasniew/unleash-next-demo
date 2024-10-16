@@ -11,11 +11,11 @@ import {initialize} from 'unleash-client';
 //   return { props: { data: "my data"} }
 // }
 
-const unleash = initialize({
-    url: process.env.UNLEASH_SERVER_API_URL,
-    appName: 'my-node-name',
-    customHeaders: { Authorization: process.env.UNLEASH_SERVER_API_TOKEN },
-});
+// const unleash = initialize({
+//     url: process.env.UNLEASH_SERVER_API_URL,
+//     appName: 'my-node-name',
+//     customHeaders: { Authorization: process.env.UNLEASH_SERVER_API_TOKEN },
+// });
 
 export default async function Page() {
     let data = await fetch('https://api.vercel.app/blog')
@@ -26,7 +26,7 @@ export default async function Page() {
     let posts = await data.json()
     return (
         <ul>
-            {unleash.isEnabled('example-flag') ? <li>example post node</li> : null}
+            {/*{unleash.isEnabled('example-flag') ? <li>example post node</li> : null}*/}
             {flags.isEnabled('example-flag') ? <li>example post next</li> : null}
             {posts.map((post) => (
                 <li key={post.id}>{post.title}</li>
