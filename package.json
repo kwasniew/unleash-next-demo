@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "UNLEASH_APP_NAME=next-demo-app UNLEASH_SERVER_API_URL=https://app.unleash-hosted.com/demo/api UNLEASH_SERVER_API_TOKEN=demo-app:dev.9fc74dd72d2b88bea5253c04240b21a54841f08d9918046ed55a06b5 next dev",
-    "build": "UNLEASH_APP_NAME=next-demo-app UNLEASH_SERVER_API_URL=https://app.unleash-hosted.com/demo/api UNLEASH_SERVER_API_TOKEN=demo-app:dev.9fc74dd72d2b88bea5253c04240b21a54841f08d9918046ed55a06b5 next build",
-    "start": "UNLEASH_APP_NAME=next-demo-app UNLEASH_SERVER_API_URL=https://app.unleash-hosted.com/demo/api UNLEASH_SERVER_API_TOKEN=demo-app:dev.9fc74dd72d2b88bea5253c04240b21a54841f08d9918046ed55a06b5 next start",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
