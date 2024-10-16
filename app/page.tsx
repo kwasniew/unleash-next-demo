@@ -17,7 +17,7 @@ import {initialize} from 'unleash-client';
 //     customHeaders: { Authorization: process.env.UNLEASH_SERVER_API_TOKEN },
 // });
 
-let metricCache = [];
+let metricCache: any = [];
 let isSendingMetrics = false;
 
 const sendMetricsBatch = async () => {
@@ -29,7 +29,7 @@ const sendMetricsBatch = async () => {
     metricCache = [];
 };
 
-const throttleMetrics = async (metric) => {
+const throttleMetrics = async (metric: any) => {
     // Add the metric to the cache
     metricCache.push(metric);
 
