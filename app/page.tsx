@@ -23,12 +23,12 @@ export default async function Page() {
     const context = {}; // optional, see https://docs.getunleash.io/reference/unleash-context
     const {toggles} = evaluateFlags(definitions, context);
     const flags = flagsClient(toggles);
-    let posts = await data.json()
+    let posts: any = await data.json()
     return (
         <ul>
             {/*{unleash.isEnabled('example-flag') ? <li>example post node</li> : null}*/}
             {flags.isEnabled('example-flag') ? <li>example post next</li> : null}
-            {posts.map((post) => (
+            {posts.map((post: any) => (
                 <li key={post.id}>{post.title}</li>
             ))}
         </ul>
