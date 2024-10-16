@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "UNLEASH_SERVER_API_URL=https://app.unleash-hosted.com/demo/api UNLEASH_SERVER_API_TOKEN=demo-app:dev.9fc74dd72d2b88bea5253c04240b21a54841f08d9918046ed55a06b5 next dev",
-    "build": "UNLEASH_SERVER_API_URL=https://app.unleash-hosted.com/demo/api UNLEASH_SERVER_API_TOKEN=demo-app:dev.9fc74dd72d2b88bea5253c04240b21a54841f08d9918046ed55a06b5 next build",
-    "start": "UNLEASH_SERVER_API_URL=https://app.unleash-hosted.com/demo/api UNLEASH_SERVER_API_TOKEN=demo-app:dev.9fc74dd72d2b88bea5253c04240b21a54841f08d9918046ed55a06b5 next start",
+    "dev": "UNLEASH_APP_NAME=next-demo-app UNLEASH_SERVER_API_URL=https://app.unleash-hosted.com/demo/api UNLEASH_SERVER_API_TOKEN=demo-app:dev.9fc74dd72d2b88bea5253c04240b21a54841f08d9918046ed55a06b5 next dev",
+    "build": "UNLEASH_APP_NAME=next-demo-app UNLEASH_SERVER_API_URL=https://app.unleash-hosted.com/demo/api UNLEASH_SERVER_API_TOKEN=demo-app:dev.9fc74dd72d2b88bea5253c04240b21a54841f08d9918046ed55a06b5 next build",
+    "start": "UNLEASH_APP_NAME=next-demo-app UNLEASH_SERVER_API_URL=https://app.unleash-hosted.com/demo/api UNLEASH_SERVER_API_TOKEN=demo-app:dev.9fc74dd72d2b88bea5253c04240b21a54841f08d9918046ed55a06b5 next start",
     "lint": "next lint"
   },
   "dependencies": {
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "next": "14.2.15",
-    "@unleash/nextjs": "1.4.4",
+    "@unleash/nextjs": "1.5.0-beta.1",
     "unleash-client": "^6.1.1"
   },
   "devDependencies": {
