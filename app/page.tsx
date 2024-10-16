@@ -24,7 +24,7 @@ const sendMetricsBatch = async () => {
     if (metricCache.length === 0) return;
 
     // Here, send the metrics to your external service or API
-    console.log('Sending metrics batch:', metricCache);
+    console.error('Sending metrics batch:', metricCache);
     // Clear the cache after sending
     metricCache = [];
 };
@@ -44,7 +44,7 @@ const throttleMetrics = async (metric: any) => {
 };
 
 export default async function Page() {
-    console.log('Requested page', new Date())
+    console.error('Requested page', new Date())
     // let data = await fetch('https://api.vercel.app/blog')
     const definitions = await getDefinitions()
     const context = {}; // optional, see https://docs.getunleash.io/reference/unleash-context
