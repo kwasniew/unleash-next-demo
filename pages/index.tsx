@@ -6,14 +6,18 @@ type Data = {
 };
 
 export const getServerSideProps: GetServerSideProps<Data> = async () => {
-    const definitions = await getDefinitions();
+    const definitions = await getDefinitions({
+        fetchOptions: {
+            next: { revalidate: 15 }, // Cache layer like Unleash Proxy!
+        },
+    });
     const context = {};
     const { toggles } = evaluateFlags(definitions, context);
-    const client = flagsClient(toggles);
+    let client = flagsClient(toggles);
 
     const enabled = client.isEnabled("example-flag");
 
-    await client.sendMetrics();
+    client.sendMetrics();
 
     return {
         props: { isEnabled: enabled },
@@ -25,6 +29,11 @@ const ExamplePage: NextPage<Data> = ({ isEnabled }) => (
 );
 
 export default ExamplePage;
+
+// let client = null;
+// setInterval(async () => {
+//     client?.sendMetrics();
+// }, 5000);
 
 // setInterval(async () => {
 //     client.sendMetrics();
