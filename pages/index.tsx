@@ -17,8 +17,7 @@ export const getServerSideProps: GetServerSideProps<Data> = async () => {
 
     const enabled = client.isEnabled("example-flag");
 
-    Promise.allSettled([client.sendMetrics()]);
-    // client.sendMetrics();
+    client.sendMetrics().catch(() => {});
 
     return {
         props: { isEnabled: enabled },
