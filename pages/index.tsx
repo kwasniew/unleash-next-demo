@@ -3,6 +3,7 @@ import {GetServerSideProps, NextPage} from "next";
 
 const originalFetch = globalThis.fetch;
 
+// @ts-ignore
 globalThis.fetch = async (...args: any) => {
     const [url, options] = args;
 
@@ -12,6 +13,7 @@ globalThis.fetch = async (...args: any) => {
         console.log('Request Body:', options?.body);
     }
 
+    // @ts-ignore
     return originalFetch(...args);
 };
 
