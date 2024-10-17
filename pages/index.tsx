@@ -5,17 +5,18 @@ type Data = {
     isEnabled: boolean;
 };
 
+const definitions = getDefinitions({
+    fetchOptions: { next: { revalidate: 3600 } }
+});
+
 export const getServerSideProps: GetServerSideProps<Data> = async () => {
-    console.time('getDefinitions');
-    const definitions = await getDefinitions({
-        fetchOptions: { next: { revalidate: 3600 } }
-    });
-    console.timeEnd('getDefinitions');
+    console.time('serverSideProps');
     const context = {};
-    const { toggles } = evaluateFlags(definitions, context);
+    const { toggles } = evaluateFlags(await definitions, context);
     let client = flagsClient(toggles);
 
     const enabled = client.isEnabled("example-flag");
+    console.timeEnd('serverSideProps');
 
     console.log('sending metrics', new Date());
     client.sendMetrics().catch(() => {});
