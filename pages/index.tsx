@@ -1,6 +1,20 @@
 import { evaluateFlags, flagsClient, getDefinitions } from "@unleash/nextjs";
 import {GetServerSideProps, NextPage} from "next";
 
+const originalFetch = globalThis.fetch;
+
+globalThis.fetch = async (...args: any) => {
+    const [url, options] = args;
+
+    if (options?.method === 'POST') {
+        // Log the request URL and body for POST requests
+        console.log('Outgoing POST Request:', url);
+        console.log('Request Body:', options?.body);
+    }
+
+    return originalFetch(...args);
+};
+
 type Data = {
     isEnabled: boolean;
 };
