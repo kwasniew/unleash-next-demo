@@ -6,7 +6,7 @@ type Data = {
 };
 
 const definitions = getDefinitions({
-    fetchOptions: { next: { revalidate: 3600 } }
+    fetchOptions: { next: { revalidate: 15 } }
 });
 
 export const getServerSideProps: GetServerSideProps<Data> = async () => {
