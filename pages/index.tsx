@@ -1,6 +1,11 @@
 import { evaluateFlags, flagsClient, getDefinitions } from "@unleash/nextjs";
+import {GetServerSideProps, NextPage} from "next";
 
-export async function getServerSideProps() {
+type Data = {
+    isEnabled: boolean;
+};
+
+export const getServerSideProps: GetServerSideProps<Data> = async () => {
     const definitions = await getDefinitions();
     const context = {};
     const { toggles } = evaluateFlags(definitions, context);
@@ -11,17 +16,15 @@ export async function getServerSideProps() {
     await client.sendMetrics();
 
     return {
-        props: { enabled }, // Pass the flag value as a prop to the page
+        props: { isEnabled: enabled },
     };
-}
+};
 
-export default function Page({ enabled }) {
-    return (
-        <ul>
-            {enabled ? <div>ENABLED</div> : <div>DISABLED</div>}
-        </ul>
-    );
-}
+const ExamplePage: NextPage<Data> = ({ isEnabled }) => (
+    <>Flag status: {isEnabled ? "ENABLED" : "DISABLED"}</>
+);
+
+export default ExamplePage;
 
 // setInterval(async () => {
 //     client.sendMetrics();
@@ -30,4 +33,5 @@ export default function Page({ enabled }) {
 // process.on("SIGTERM", async () => {
 //     await client.sendMetrics();
 //     // destroyWithFlush in node SDK
+
 // });
