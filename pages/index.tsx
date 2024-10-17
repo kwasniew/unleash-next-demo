@@ -6,17 +6,20 @@ type Data = {
 };
 
 export const getServerSideProps: GetServerSideProps<Data> = async () => {
+    console.time('getDefinitions');
     const definitions = await getDefinitions({
         fetchOptions: {
             next: { revalidate: 15 }, // Cache layer like Unleash Proxy!
         },
     });
+    console.timeEnd('getDefinitions');
     const context = {};
     const { toggles } = evaluateFlags(definitions, context);
     let client = flagsClient(toggles);
 
     const enabled = client.isEnabled("example-flag");
 
+    console.log('sending metrics', new Date());
     client.sendMetrics().catch(() => {});
 
     return {
