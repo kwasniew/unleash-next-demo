@@ -13,8 +13,7 @@
     "react-dom": "18.3.1",
     "next": "14.2.15",
     "@unleash/nextjs": "1.5.0-beta.1",
-    "unleash-client": "^6.1.1",
-    "@vercel/functions": "1.4.2"
+    "unleash-client": "^6.1.1"
   },
   "devDependencies": {
     "typescript": "^5",

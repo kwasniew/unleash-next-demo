@@ -1,5 +1,4 @@
 import {evaluateFlags, flagsClient, getDefinitions,} from "@unleash/nextjs";
-import {waitUntil} from "@vercel/functions";
 
 const definitions = await getDefinitions();
 const context = {};
@@ -19,7 +18,6 @@ const client = flagsClient(toggles);
 export default async function Page() {
     const enabled = client.isEnabled('example-flag');
 
-    // waitUntil(client.sendMetrics());
     await client.sendMetrics()
 
     return (
