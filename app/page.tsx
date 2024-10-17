@@ -20,7 +20,7 @@ export default async function Page() {
     const enabled = client.isEnabled('example-flag');
 
     // waitUntil(client.sendMetrics());
-    client.sendMetrics()
+    await client.sendMetrics()
 
     return (
         <ul>
