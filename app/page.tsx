@@ -6,9 +6,9 @@ const {toggles} = evaluateFlags(definitions, context);
 const client = flagsClient(toggles);
 
 
-setInterval(async () => {
-    client.sendMetrics();
-}, 5000);
+// setInterval(async () => {
+//     client.sendMetrics();
+// }, 5000);
 
 process.on("SIGTERM", async () => {
     await client.sendMetrics();
@@ -17,6 +17,8 @@ process.on("SIGTERM", async () => {
 
 export default async function Page() {
     const enabled = client.isEnabled('example-flag');
+
+    await client.sendMetrics();
 
     return (
         <ul>
