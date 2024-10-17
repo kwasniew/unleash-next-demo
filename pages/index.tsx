@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps<Data> = async () => {
     console.time('getDefinitions');
     const definitions = await getDefinitions({
         fetchOptions: {
-            next: { revalidate: 15 }, // Cache layer like Unleash Proxy!
+             cache: 'force-cache'
         },
     });
     console.timeEnd('getDefinitions');
