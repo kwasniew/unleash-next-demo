@@ -24,9 +24,7 @@ type Data = {
 export const getServerSideProps: GetServerSideProps<Data> = async () => {
     console.time('getDefinitions');
     const definitions = await getDefinitions({
-        fetchOptions: {
-             cache: 'force-cache'
-        },
+        fetchOptions: { next: { revalidate: 3600 } }
     });
     console.timeEnd('getDefinitions');
     const context = {};
